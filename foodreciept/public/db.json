@@ -1,0 +1,148 @@
+{
+    "recipes": [
+      {
+        "name": "Mutton Curry",
+        "img":"https://c8.alamy.com/comp/2C624BF/mutton-curry-or-lamb-curryspicy-and-delicious-dish-garnished-with-coriander-leaf-red-chilli-and-star-anise-spice-in-an-earthenware-bowl-with-white-2C624BF.jpg",
+        "ingredients": [
+          "500g mutton, cut into pieces",
+          "2 tablespoons vegetable oil",
+          "1 large onion, finely chopped",
+          "2 cloves garlic, minced",
+          "1 tablespoon ginger, minced",
+          "2 tomatoes, chopped",
+          "1 cup plain yogurt",
+          "2 teaspoons ground coriander",
+          "1 teaspoon ground cumin",
+          "1 teaspoon turmeric powder",
+          "1 teaspoon garam masala",
+          "1 teaspoon red chili powder",
+          "1 cup water",
+          "Salt to taste",
+          "Fresh cilantro for garnish"
+        ],
+        "instructions": [
+          "Heat oil in a large pot over medium heat.",
+          "Add onions and cook until golden brown.",
+          "Add garlic and ginger, and cook for another minute.",
+          "Add tomatoes and cook until they break down.",
+          "Stir in coriander, cumin, turmeric, garam masala, and chili powder.",
+          "Add mutton pieces and cook until browned on all sides.",
+          "Stir in yogurt and cook for a few minutes.",
+          "Add water and bring to a boil.",
+          "Reduce heat, cover, and simmer for 1.5 to 2 hours, or until mutton is tender.",
+          "Season with salt and garnish with fresh cilantro before serving."
+        ]
+      },
+      {
+        "name": "Chicken Stew",
+        "img":"https://www.africanbites.com/wp-content/uploads/2013/09/IMG_0357.jpg",
+        "ingredients": [
+          "500g chicken pieces",
+          "2 tablespoons vegetable oil",
+          "1 large onion, chopped",
+          "2 carrots, sliced",
+          "2 celery stalks, sliced",
+          "3 cloves garlic, minced",
+          "1 teaspoon dried thyme",
+          "1 bay leaf",
+          "1 cup chicken broth",
+          "1 cup water",
+          "2 potatoes, cubed",
+          "Salt and pepper to taste",
+          "Chopped parsley for garnish"
+        ],
+        "instructions": [
+          "Heat oil in a large pot over medium heat.",
+          "Add onion and cook until softened.",
+          "Add garlic, carrots, and celery, and cook for a few minutes.",
+          "Add chicken pieces and cook until browned.",
+          "Stir in thyme and bay leaf.",
+          "Add chicken broth and water, and bring to a boil.",
+          "Reduce heat and simmer for 30 minutes.",
+          "Add potatoes and continue to simmer until chicken is cooked through and potatoes are tender.",
+          "Season with salt and pepper, and garnish with chopped parsley before serving."
+        ]
+      },
+      {
+        "name": "Potato Salad",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8iRuQsZDxydaMl6wUk3rVk2YaglmwsnUog&s",
+        "ingredients": [
+          "4 large potatoes, peeled and diced",
+          "1/2 cup mayonnaise",
+          "1/4 cup sour cream",
+          "1 tablespoon Dijon mustard",
+          "1 tablespoon apple cider vinegar",
+          "1/4 cup chopped fresh dill",
+          "1/4 cup chopped green onions",
+          "Salt and pepper to taste",
+          "Paprika for garnish"
+        ],
+        "instructions": [
+          "Cook potatoes in a large pot of boiling salted water until tender, about 10 minutes.",
+          "Drain and let cool slightly.",
+          "In a large bowl, combine mayonnaise, sour cream, Dijon mustard, and apple cider vinegar.",
+          "Add cooled potatoes, dill, and green onions.",
+          "Mix gently to combine.",
+          "Season with salt and pepper.",
+          "Chill in the refrigerator for at least an hour before serving.",
+          "Garnish with paprika before serving."
+        ]
+      },
+      {
+        "name": "Lasagne",
+        "img":"https://www.recipetineats.com/uploads/2017/05/Lasagne-recipe-3-main.jpg",
+        "ingredients": [
+          "12 lasagne noodles",
+          "500g ground beef",
+          "1 onion, chopped",
+          "2 cloves garlic, minced",
+          "1 can (400g) crushed tomatoes",
+          "2 tablespoons tomato paste",
+          "1 teaspoon dried basil",
+          "1 teaspoon dried oregano",
+          "1 teaspoon sugar",
+          "2 cups ricotta cheese",
+          "1 cup grated Parmesan cheese",
+          "2 cups shredded mozzarella cheese",
+          "Salt and pepper to taste"
+        ],
+        "instructions": [
+          "Preheat oven to 180°C (350°F).",
+          "Cook lasagne noodles according to package instructions, then drain and set aside.",
+          "In a large skillet, cook ground beef with onion and garlic until browned.",
+          "Stir in crushed tomatoes, tomato paste, basil, oregano, and sugar.",
+          "Simmer for 15 minutes, then season with salt and pepper.",
+          "In a bowl, mix ricotta cheese with Parmesan cheese.",
+          "Spread a thin layer of meat sauce in the bottom of a baking dish.",
+          "Layer noodles over the sauce, then spread with some of the ricotta mixture and sprinkle with mozzarella cheese.",
+          "Repeat layers, ending with a layer of meat sauce and mozzarella cheese on top.",
+          "Cover with foil and bake for 25 minutes.",
+          "Remove foil and bake for an additional 25 minutes, or until cheese is bubbly and golden.",
+          "Let cool for 10 minutes before serving."
+        ]
+      },
+      {
+        "name": "Prawns",
+        "img":"https://www.foodandwine.com/thmb/efFCylKyN5KxcnfbnFDXRj3TVAg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Garlic-Ganbak-Skillet-Spot-Prawns-with-Garlic-and-Spanish-Paprika-FT-RECIPE0823-3a33676e58674a01904a5a086604b220.jpg",
+        "ingredients": [
+          "500g large prawns, peeled and deveined",
+          "2 tablespoons olive oil",
+          "3 cloves garlic, minced",
+          "1 teaspoon smoked paprika",
+          "1/2 teaspoon chili flakes",
+          "1 tablespoon lemon juice",
+          "Salt and pepper to taste",
+          "Chopped parsley for garnish"
+        ],
+        "instructions": [
+          "Heat olive oil in a large skillet over medium-high heat.",
+          "Add garlic and cook for 1 minute until fragrant.",
+          "Add prawns, paprika, and chili flakes.",
+          "Cook prawns for 2-3 minutes on each side, or until pink and opaque.",
+          "Stir in lemon juice and season with salt and pepper.",
+          "Garnish with chopped parsley before serving."
+        ]
+      }
+    ]
+  }
+  

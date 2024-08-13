@@ -1,0 +1,100 @@
+* Basic reset and body styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+/* Container for the recipes */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Recipe title */
+h1, h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  border-bottom: 2px solid #e2e2e2;
+  padding-bottom: 10px;
+}
+
+/* Recipe list styling */
+.recipe-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recipe-item {
+  margin-bottom: 30px;
+}
+
+.recipe-item h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Recipe ingredients and instructions */
+.ingredients, .instructions {
+  margin-bottom: 20px;
+}
+
+.ingredients ul, .instructions ol {
+  padding-left: 20px;
+}
+
+.ingredients li, .instructions li {
+  margin-bottom: 5px;
+}
+
+/* Buttons for navigation */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+}
