@@ -1,26 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-import './App.css';
-import Recipe from './Recipe';
-import './register.css';
-import './components/searchpage.js';
+import { useNavigate } from 'react-router-dom';
+import './App.css'; // Ensure this CSS file is correctly imported
 
 const Register = () => {
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const navigate = useNavigate(); 
+  const [email, setEmail] = React.useState('');
+  const [cellNumber, setCellNumber] = React.useState('');
+  const navigate = useNavigate();
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const handleUsernameChange = (e) => setUsername(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleCellNumberChange = (e) => setCellNumber(e.target.value);
 
   const handleRegister = () => {
-    alert(`Registered with username: ${username} and password: ${password}`);
-    navigate('/recipes'); 
+    alert(`Registered with Username: ${username}, Password: ${password}, Email: ${email}, Cell Number: ${cellNumber}`);
+    navigate('/recipes');
   };
 
   return (
@@ -45,6 +41,24 @@ const Register = () => {
             onChange={handlePasswordChange}
           />
         </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="cellnumber">Cell Number:</label>
+          <input
+            type="tel"
+            id="cellnumber"
+            value={cellNumber}
+            onChange={handleCellNumberChange}
+          />
+        </div>
         <button type="button" onClick={handleRegister}>
           Register
         </button>
@@ -53,15 +67,4 @@ const Register = () => {
   );
 };
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/recipes" element={<Recipe />} />
-      </Routes>
-    </Router>
-  );
-};
-
-export default App;
+export default Register;

@@ -8,8 +8,9 @@ const Recipe = () => {
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage, setRecipesPerPage] = useState(3); // Display 3 recipes per page
+  const [recipesPerPage, setRecipesPerPage] = useState(3);
   const [editingRecipe, setEditingRecipe] = useState(null);
+  const [showFullRecipe, setShowFullRecipe] = useState(null); // New state to manage full recipe visibility
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -51,8 +52,12 @@ const Recipe = () => {
     }
   };
 
-  const handleShowMore = () => {
-    setRecipesPerPage(prevCount => prevCount + 3); // Increase the number of recipes per page
+  const handleShowMore = (index) => {
+    if (showFullRecipe === index) {
+      setShowFullRecipe(null);
+    } else {
+      setShowFullRecipe(index);
+    }
   };
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -65,7 +70,10 @@ const Recipe = () => {
 
   return (
     <div className="recipe-container">
+      <button onClick={handleLogout} className="logout-button">Logout</button>
+      <div className='logo'></div>
       <h1>Recipes</h1>
+      
       <input
         type="text"
         value={searchTerm}
@@ -73,7 +81,6 @@ const Recipe = () => {
         placeholder="Search recipes..."
       />
       <button onClick={handleSearch}>Search</button>
-      <button onClick={handleLogout} className="logout-button">Logout</button>
 
       {editingRecipe && (
         <div className="edit-form">
@@ -110,14 +117,19 @@ const Recipe = () => {
                     <li key={i}>{ingredient}</li>
                   ))}
                 </ul>
-              </div>
-              <div className="recipe-section">
-                <h3>Instructions:</h3>
-                <ol className="recipe-instructions">
-                  {recipe.instructions.map((instruction, i) => (
-                    <li key={i}>{instruction}</li>
-                  ))}
-                </ol>
+                {showFullRecipe === index && (
+                  <div className="recipe-section">
+                    <h3>Instructions:</h3>
+                    <ol className="recipe-instructions">
+                      {recipe.instructions.map((instruction, i) => (
+                        <li key={i}>{instruction}</li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+                <button onClick={() => handleShowMore(index)}>
+                  {showFullRecipe === index ? 'Show Less' : 'Show More'}
+                </button>
               </div>
               <button onClick={() => handleEdit(index)}>Edit Recipe</button>
             </div>
@@ -138,7 +150,7 @@ const Recipe = () => {
         >
           Next
         </button>
-        <button onClick={handleShowMore}>Show More</button>
+        {/* Removed "Show More" button */}
       </div>
     </div>
   );

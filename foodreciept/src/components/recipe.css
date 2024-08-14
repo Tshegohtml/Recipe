@@ -1,8 +1,9 @@
 .recipe-container {
   font-family: Arial, sans-serif;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1000 px;
   padding: 20px;
+  position:relative;
 }
 
 .recipe-list {
@@ -73,11 +74,13 @@ button {
 }
 
 .pagination button {
-  margin-right: 10px;
+  display:flex;
+  justify-content: center;
+  
 }
 
 .pagination {
-  margin-top: 20px;
+  margin-top: 0 10px;
 }
 
 input[type="text"], textarea {
@@ -86,4 +89,24 @@ input[type="text"], textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+.logout-button {
+  position: absolute;
+  top: 20px; 
+  right: 20px; 
+ 
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #007bff; /* Consistent with other buttons */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px; 
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
