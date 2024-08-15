@@ -13,7 +13,7 @@ body {
   padding: 20px;
 }
 
-/* Container for the recipes */
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -23,7 +23,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Recipe title */
+
 h1, h2 {
   color: #333;
   margin-bottom: 20px;
@@ -98,3 +98,14 @@ button:hover {
     font-size: 0.9em;
   }
 }
+.logo {
+  background-image: url(./components/Studio\ Shodwe.png);
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  aspect-ratio: 1/1;
+  padding: 100px;
+  
+  margin: 0 auto;
+}
+

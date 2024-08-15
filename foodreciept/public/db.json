@@ -19,7 +19,9 @@
           "1 cup water",
           "Salt to taste",
           "Fresh cilantro for garnish"
+          
         ],
+        "category":"Curry",
         "instructions": [
           "Heat oil in a large pot over medium heat.",
           "Add onions and cook until golden brown.",
@@ -51,6 +53,8 @@
           "Salt and pepper to taste",
           "Chopped parsley for garnish"
         ],
+        "category":"Stew",
+
         "instructions": [
           "Heat oil in a large pot over medium heat.",
           "Add onion and cook until softened.",
@@ -77,6 +81,7 @@
           "Salt and pepper to taste",
           "Paprika for garnish"
         ],
+        "category":"Salad",
         "instructions": [
           "Cook potatoes in a large pot of boiling salted water until tender, about 10 minutes.",
           "Drain and let cool slightly.",
@@ -106,6 +111,7 @@
           "2 cups shredded mozzarella cheese",
           "Salt and pepper to taste"
         ],
+        "category":"Lasagne",
         "instructions": [
           "Preheat oven to 180°C (350°F).",
           "Cook lasagne noodles according to package instructions, then drain and set aside.",
@@ -134,6 +140,7 @@
           "Salt and pepper to taste",
           "Chopped parsley for garnish"
         ],
+        "category":"Prawns",
         "instructions": [
           "Heat olive oil in a large skillet over medium-high heat.",
           "Add garlic and cook for 1 minute until fragrant.",

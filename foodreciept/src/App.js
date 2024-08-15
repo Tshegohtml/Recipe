@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import './App.css';
 import Recipe from './components/recipe';
 import './components/register.css';
+import LoginForm from './components/login';
+
 
 
 const Register = () => {
@@ -19,15 +21,16 @@ const Register = () => {
 
   const handleRegister = () => {
     alert(`Registered with Username: ${username}, Password: ${password}, Email: ${email}, Cell Number: ${cellNumber}`);
-    navigate('/recipes');
+    navigate('/login');
   };
 
   return (
     <div className="App">
+      <div className='logo'></div>
       <h1>Register</h1>
       <form>
         <div>
-          <label  htmlFor="username">Username:</label>
+          <label htmlFor="username">Username:</label>
           <input className='user'
             type="text"
             id="username"
@@ -85,9 +88,12 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Register />} />
-        
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/recipes" element={<Recipe recipes={recipes} />} />
+        {/* <Route path="/recipes/:category" element={<Recipe recipes={recipes} />} /> Handle category */}
+        <Route path="/" element={<Register />} /> {/* Default route */}
+        
       </Routes>
     </Router>
   );

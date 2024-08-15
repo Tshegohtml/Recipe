@@ -56,7 +56,7 @@ h3 {
 .edit-form {
   border: 1px solid #ddd;
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -101,7 +101,7 @@ input[type="text"], textarea {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: #007bff; /* Consistent with other buttons */
+  background-color: #007bff; 
   color: white;
   border: none;
   padding: 6px 12px;
@@ -109,4 +109,35 @@ input[type="text"], textarea {
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s;
+}
+.search-container{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px ;
+}
+.category-buttons {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px; 
+}
+
+.category-buttons button {
+  padding: 5px 10px;
+  background-color: #007BFF; 
+  color: #fff;
+  border: none; 
+  border-radius: 3px; 
+  cursor: pointer; 
+}
+
+.category-buttons button:hover {
+  background-color: #0056b3; 
+}
+.profile-button{
+  margin-left: 10px;
+  padding:10px 15px;
+  border:none;
+  border-radius: 5px;
+  cursor:  pointer;
 }

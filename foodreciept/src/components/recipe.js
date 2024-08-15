@@ -1,34 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './recipe.css';
+import './recipe.css'; 
 import muttonstew from "../mutton stew.jpg";
 
-const Recipe = () => {
-  const [recipes, setRecipes] = useState([]);
+const Recipe = ({ recipes }) => {
+  const [category, setCategory] = useState(); // Get category from URL params
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [recipesPerPage, setRecipesPerPage] = useState(3);
   const [editingRecipe, setEditingRecipe] = useState(null);
-  const [showFullRecipe, setShowFullRecipe] = useState(null); // New state to manage full recipe visibility
+  const [showFullRecipe, setShowFullRecipe] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('/db.json')
-      .then(response => response.json())
-      .then(data => {
-        setRecipes(data.recipes);
-        setFilteredRecipes(data.recipes);
-      })
-      .catch(error => console.error('Error fetching recipes:', error));
-  }, []);
+    let results = recipes;
 
-  const handleSearch = () => {
-    const results = recipes.filter(recipe =>
-      recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    if (category && category !== "all") {
+      results = recipes.filter(recipe => recipe.category === category);
+    }
+
+    if (searchTerm) {
+      results = results.filter(recipe =>
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
     setFilteredRecipes(results);
     setCurrentPage(1);
+  }, [category, searchTerm, recipes]);
+
+  const handleSearch = () => {
+    // Search is handled in useEffect now
   };
 
   const handleEdit = (index) => {
@@ -39,7 +42,6 @@ const Recipe = () => {
     const updatedRecipes = filteredRecipes.map((recipe) =>
       recipe.id === editingRecipe.id ? editingRecipe : recipe
     );
-    setRecipes(updatedRecipes);
     setFilteredRecipes(updatedRecipes);
     setEditingRecipe(null);
   };
@@ -65,22 +67,41 @@ const Recipe = () => {
   const currentRecipes = filteredRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   const handleLogout = () => {
-    navigate('/'); // Navigate to the Register page
+    navigate('/'); 
+  };
+
+  const handleProfile = () => {
+    navigate('/profile'); // Navigate to the Profile page
   };
 
   return (
     <div className="recipe-container">
-      <button onClick={handleLogout} className="logout-button">Logout</button>
+      <div className="header-buttons">
+        <button onClick={handleProfile} className="profile-button">Profile</button>
+        <button onClick={handleLogout} className="logout-button">Logout</button>
+      </div>
       <div className='logo'></div>
-      <h1>Recipes</h1>
+      <h1>{category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Recipes'}</h1>
       
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search recipes..."
-      />
-      <button onClick={handleSearch}>Search</button>
+      <div className="search-container">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search recipes..."
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+
+      <div className="category-buttons">
+        <button onClick={() => setCategory("all")}>All</button> 
+        <button onClick={() => setCategory("Curry")}>Curry</button>
+        <button onClick={() => setCategory("Stew")}>Stew</button>
+        <button onClick={() => setCategory("Salad")}>Salad</button>
+        <button onClick={() => setCategory("Main")}>Main Meals</button>
+        <button onClick={() => setCategory("Breakfast")}>Breakfast</button>
+        <button onClick={() => setCategory("Dessert")}>Dessert</button>
+      </div>
 
       {editingRecipe && (
         <div className="edit-form">
@@ -150,7 +171,7 @@ const Recipe = () => {
         >
           Next
         </button>
-        {/* Removed "Show More" button */}
+        <p>Page {currentPage} of {Math.ceil(filteredRecipes.length / recipesPerPage)}</p>
       </div>
     </div>
   );
