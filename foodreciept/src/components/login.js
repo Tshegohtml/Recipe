@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +19,17 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   
-    console.log('Form submitted:', formData);
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-  
-    navigate('/recipes');
+    const user = users.find(user => user.username === formData.username && user.password === formData.password);
+
+    if (user) {
+      // Optionally store user info in sessionStorage or pass it as state
+      sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+      navigate('/recipes');
+    } else {
+      alert('Invalid Username or Password');
+    }
   };
 
   return (
@@ -64,4 +70,5 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
 

@@ -4,26 +4,37 @@ import './App.css';
 import Recipe from './components/recipe';
 import './components/register.css';
 import LoginForm from './components/login';
+import './components/profile';
 
 
-
-const Register = () => {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [cellNumber, setCellNumber] = React.useState('');
+const Register = ({onRegister}) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const navigate = useNavigate();
 
-  const handleUsernameChange = (e) => setUsername(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handleCellNumberChange = (e) => setCellNumber(e.target.value);
+  const handleRegister = (e) => {
+    e.preventDefault();
 
-  const handleRegister = () => {
-    alert(`Registered with Username: ${username}, Password: ${password}, Email: ${email}, Cell Number: ${cellNumber}`);
-    navigate('/login');
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    console.log('Users:', users);
+
+    if (users.find(user => user.username === username)) {
+      alert('Username Exists');
+    } else if (users.find(user => user.email === email)) {
+      alert('Email Already Registered');
+    } else if (!/^\d{10}$/.test(phone)) {
+      alert('Enter a Valid 10-digit Phone Number');
+    } else {
+      const newUser = { username, password, email, phone };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registration Successful!');
+     
+    }
+   navigate('/login')
   };
-
   return (
     <div className="App">
       <div className='logo'></div>
@@ -35,7 +46,7 @@ const Register = () => {
             type="text"
             id="username"
             value={username}
-            onChange={handleUsernameChange}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div>
@@ -44,7 +55,7 @@ const Register = () => {
             type="password"
             id="password"
             value={password}
-            onChange={handlePasswordChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div>
@@ -53,7 +64,7 @@ const Register = () => {
             type="email"
             id="email"
             value={email}
-            onChange={handleEmailChange}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
@@ -61,8 +72,8 @@ const Register = () => {
           <input
             type="tel"
             id="cellnumber"
-            value={cellNumber}
-            onChange={handleCellNumberChange}
+            value={phone} onChange={(e) => setPhone(e.target.value)} 
+            required maxLength={10}
           />
         </div>
         <button type="button" onClick={handleRegister}>
@@ -92,8 +103,8 @@ const App = () => {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/recipes" element={<Recipe recipes={recipes} />} />
         {/* <Route path="/recipes/:category" element={<Recipe recipes={recipes} />} /> Handle category */}
-        <Route path="/" element={<Register />} /> {/* Default route */}
-        
+        <Route path="/" element={<Register />} /> 
+        <Route path="/userContext" element={<userContext />} />
       </Routes>
     </Router>
   );

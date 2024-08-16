@@ -101,7 +101,7 @@ input[type="text"], textarea {
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: #007bff; 
+  background-color:red; 
   color: white;
   border: none;
   padding: 6px 12px;
