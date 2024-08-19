@@ -91,6 +91,9 @@ const Recipe = ({ recipes }) => {
   
       if (!response.ok) {
         throw new Error('Failed to delete recipe');
+        const errorText = await response.text();
+      console.error('Failed to delete recipe:', response.status, errorText);
+      throw new Error ('Failed to delete recipe');
       }
   
       
