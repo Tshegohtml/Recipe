@@ -4,7 +4,9 @@ import './App.css';
 import Recipe from './components/recipe';
 import './components/register.css';
 import LoginForm from './components/login';
-import './components/profile';
+import Profile from './components/profile';
+import AddRecipe from './components/addrecipe'; 
+
 
 
 const Register = ({onRegister}) => {
@@ -105,6 +107,8 @@ const App = () => {
         {/* <Route path="/recipes/:category" element={<Recipe recipes={recipes} />} /> Handle category */}
         <Route path="/" element={<Register />} /> 
         <Route path="/userContext" element={<userContext />} />
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/addrecipe" element={<AddRecipe  />} />
       </Routes>
     </Router>
   );

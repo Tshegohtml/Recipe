@@ -4,7 +4,7 @@ const Profile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Fetch user data from local storage
+   
     const users = JSON.parse(localStorage.getItem('users')) || [];
     // Get the logged-in user; assume the first user for simplicity
     const loggedInUser = users[0]; // Adjust logic based on how you determine the logged-in user

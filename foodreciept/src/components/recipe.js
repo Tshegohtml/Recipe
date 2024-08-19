@@ -4,11 +4,11 @@ import './recipe.css';
 import muttonstew from "../mutton stew.jpg";
 
 const Recipe = ({ recipes }) => {
-  const [category, setCategory] = useState(); // Get category from URL params
+  const [category, setCategory] = useState(); 
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage, setRecipesPerPage] = useState(3);
+  const [recipesPerPage, setRecipes] = useState(3);
   const [editingRecipe, setEditingRecipe] = useState(null);
   const [showFullRecipe, setShowFullRecipe] = useState(null);
   const navigate = useNavigate();
@@ -30,22 +30,77 @@ const Recipe = ({ recipes }) => {
     setCurrentPage(1);
   }, [category, searchTerm, recipes]);
 
-  const handleSearch = () => {
-    // Search is handled in useEffect now
-  };
+  const handleSearch = () => {};
 
   const handleEdit = (index) => {
     setEditingRecipe(filteredRecipes[index]);
   };
 
-  const handleSaveEdit = () => {
-    const updatedRecipes = filteredRecipes.map((recipe) =>
-      recipe.id === editingRecipe.id ? editingRecipe : recipe
-    );
-    setFilteredRecipes(updatedRecipes);
-    setEditingRecipe(null);
+  const handleSaveEdit = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/recipes/${editingRecipe.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editingRecipe),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update recipe');
+      }
+
+      const updatedRecipes = filteredRecipes.map(recipe =>
+        recipe.id === editingRecipe.id ? editingRecipe : recipe
+      );
+      setFilteredRecipes(updatedRecipes);
+      setEditingRecipe(null);
+    } catch (error) {
+      console.error('Error updating recipe:', error);
+    }
   };
 
+  const handleAddRecipe = async (newRecipe) => {
+    try {
+      const response = await fetch('http://localhost:3001/recipes', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRecipe),
+      });
+    
+      if (!response.ok) {
+        throw new Error('Failed to add recipe');
+      }
+      const savedRecipe = await response.json();
+      setRecipes(prevRecipes => [...prevRecipes, savedRecipe]);
+      setFilteredRecipes(prevRecipes => [...prevRecipes, savedRecipe]);
+    } catch (error) {
+      console.error('Error adding recipe:', error);
+    }
+    navigate('/addrecipe');
+  };
+
+  const handleDeleteRecipe = async (id) => {
+    try {
+      
+      const response = await fetch(`http://localhost:3001/recipes/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to delete recipe');
+      }
+  
+      
+      const updatedRecipes = filteredRecipes.filter(recipe => recipe.id !== id);
+      setFilteredRecipes(updatedRecipes);
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    }
+  };
+  
   const handlePageChange = (direction) => {
     if (direction === 'next') {
       setCurrentPage(prevPage => Math.min(prevPage + 1, Math.ceil(filteredRecipes.length / recipesPerPage)));
@@ -71,7 +126,7 @@ const Recipe = ({ recipes }) => {
   };
 
   const handleProfile = () => {
-    navigate('/profile'); // Navigate to the Profile page
+    navigate('/profile'); 
   };
 
   return (
@@ -123,6 +178,8 @@ const Recipe = ({ recipes }) => {
         </div>
       )}
 
+      <button onClick={handleAddRecipe} className="add-button">Add Recipe</button>
+
       {currentRecipes.length === 0 ? (
         <p>No recipes found.</p>
       ) : (
@@ -152,7 +209,10 @@ const Recipe = ({ recipes }) => {
                   {showFullRecipe === index ? 'Show Less' : 'Show More'}
                 </button>
               </div>
-              <button onClick={() => handleEdit(index)}>Edit Recipe</button>
+              <div className="recipe-actions">
+                <button onClick={() => handleEdit(index)}>Edit Recipe</button>
+                <button onClick={() => handleDeleteRecipe(recipe.id, recipe.name)} className="delete-button">Delete Recipe</button>
+              </div>
             </div>
           ))}
         </div>

@@ -141,3 +141,45 @@ input[type="text"], textarea {
   border-radius: 5px;
   cursor:  pointer;
 }
+/* Add button styling */
+.add-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #45a049; 
+}
+
+
+.delete-button {
+  background-color: #f44336; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #e53935; 
+}
+
+
+.recipe-actions {
+  margin-top: 10px;
+}
+
+
