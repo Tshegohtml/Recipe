@@ -60,25 +60,8 @@ const Recipe = ({ recipes }) => {
     }
   };
 
-  const handleAddRecipe = async (newRecipe) => {
-    try {
-      const response = await fetch('http://localhost:3001/recipes', { 
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newRecipe),
-      });
+  const handleAddRecipe = () => {
     
-      if (!response.ok) {
-        throw new Error('Failed to add recipe');
-      }
-      const savedRecipe = await response.json();
-      setRecipes(prevRecipes => [...prevRecipes, savedRecipe]);
-      setFilteredRecipes(prevRecipes => [...prevRecipes, savedRecipe]);
-    } catch (error) {
-      console.error('Error adding recipe:', error);
-    }
     navigate('/addrecipe');
   };
 
@@ -92,7 +75,7 @@ const Recipe = ({ recipes }) => {
       if (!response.ok) {
         throw new Error('Failed to delete recipe');
         const errorText = await response.text();
-      console.error('Failed to delete recipe:', response.status, errorText);
+        console.error('Failed to delete recipe:', response.status, errorText);
       throw new Error ('Failed to delete recipe');
       }
   

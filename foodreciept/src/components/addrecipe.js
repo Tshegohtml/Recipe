@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './addrecipe.css';
 
-const AddRecipe = ({ onAddRecipe }) => {
+const AddRecipe = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('all');
   const [ingredients, setIngredients] = useState('');
   const [instructions, setInstructions] = useState('');
   const [image, setImage] = useState('');
   const navigate = useNavigate();
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newRecipe = {
@@ -22,8 +24,32 @@ const AddRecipe = ({ onAddRecipe }) => {
       img: image,
     };
 
-    onAddRecipe(newRecipe);
-    navigate('/'); 
+    await handleAddRecipe(newRecipe);
+  };
+
+  const handleAddRecipe = async (newRecipe) => {
+    try {
+      const response = await fetch('http://localhost:3001/recipes', { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRecipe),
+      });
+    
+      if (!response.ok) {
+        throw new Error('Failed to add recipe');
+      }
+
+      const savedRecipe = await response.json();
+      setRecipes(prevRecipes => [...prevRecipes, savedRecipe]);
+      setFilteredRecipes(prevRecipes => [...prevRecipes, savedRecipe]);
+
+      // Navigate to the homepage after adding the recipe
+      navigate('/');
+    } catch (error) {
+      console.error('Error adding recipe:', error);
+    }
   };
 
   return (
